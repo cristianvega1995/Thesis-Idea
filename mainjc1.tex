@@ -1,0 +1,509 @@
+\documentclass[11pt]{report}
+\usepackage{srcltx}
+\usepackage{xcolor}
+%\usepackage[color]{showkeys}
+\usepackage{graphicx}
+%\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{theorem}
+\usepackage{euscript}
+\usepackage{stmaryrd}
+%\usepackage{kpfonts}
+\usepackage{epic,eepic}
+\usepackage{pstricks}
+\usepackage{enumitem} 
+\usepackage{parskip}
+\usepackage{hyperref}
+\usepackage{cleveref}
+%\usepackage{tikz,pgfplots}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{color}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{multirow, array}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{mathdots}
+\usepackage{stackrel}
+\usepackage{relsize}
+\usepackage{ dsfont }
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{setspace} 
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage{mathtools}
+\usepackage{subfigure}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{theorem}
+\usepackage{euscript}
+\usepackage{epic,eepic}
+\usepackage{pstricks}
+\usepackage{blindtext}
+\usepackage[english]{babel}
+%\usepackage[spanish]{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage[color]{showkeys}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{theorem}
+\usepackage{euscript}
+\usepackage{epic,eepic}
+\usepackage{pstricks}
+\usepackage{epstopdf}
+\usepackage{mathtools}
+\usepackage{afterpage}
+
+\usepackage{parskip}
+\usepackage{tikz}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{multirow, array}
+\usepackage{booktabs}
+\usepackage{mathrsfs}
+\usepackage{mathdots}
+\usepackage{stackrel}
+\usepackage{cite}
+\usepackage{fancybox, calc}
+\usepackage{verbatim}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+\usepackage{verbatim}
+\usepackage{color}
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+\lstset{ 
+  backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+  basicstyle=\footnotesize,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  commentstyle=\color{mygreen},    % comment style
+  deletekeywords={...},            % if you want to delete keywords from the given language
+  escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  firstnumber=1,                % start line enumeration with line 1000
+  frame=single,	                   % adds a frame around the code
+  keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+  keywordstyle=\color{blue},       % keyword style
+  language=Octave,                 % the language of the code
+  morekeywords={*,...},            % if you want to add more keywords to the set
+  numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,                   % how far the line-numbers are from the code
+  numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+  rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  stepnumber=1,                    % the step between two line-numbers. If it's 1, each line will be numbered
+  stringstyle=\color{mymauve},     % string literal style
+  tabsize=2,	                   % sets default tabsize to 2 spaces
+  title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%\RequirePackage[colorlinks,hyperindex]{hyperref}
+%\hypersetup{
+ %   linktocpage=true,
+  %  citecolor=dblue,    % color can be changed!
+   % linkcolor=dgreen,
+    %urlcolor=blue% color can be changed!
+%}
+%-------------------------------------------------------------------------
+\topmargin -0.7cm
+\oddsidemargin -0.1cm
+\textwidth  16.6cm 
+\headheight 0.0cm
+\textheight 22.6cm
+\parindent  5mm
+\parskip    8pt
+\tolerance  1000
+\definecolor{labelkey}{rgb}{0,0.08,0.45}
+\definecolor{refkey}{rgb}{0,0.6,0.0}
+\definecolor{Brown}{rgb}{0.45,0.0,0.05}
+\definecolor{dgreen}{rgb}{0.00,0.49,0.00}
+\definecolor{dblue}{rgb}{0,0.08,0.75}
+%-------------------------------------------------------------------------
+\DeclareSymbolFont{largesymbolsA}{U}{jkpexa}{m}{n}
+\SetSymbolFont{largesymbolsA}{bold}{U}{jkpexa}{bx}{n}
+\DeclareMathSymbol{\varprod}{\mathop}{largesymbolsA}{16}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\author{Cristian Vega}
+\title{\sffamily Alternating and randomized projections on convex optimization
+\footnote{Contact author: 
+Cristian Vega Cere\~no, {\ttfamily cristian.vega.14@sansano.usm.cl},
+}}
+\author{Cristian Vega$^1$ 
+\\[5mm]
+\small $\!^1$Universidad T\'ecnica Federico Santa Mar\'ia\\
+\small Departamento de Matem\'atica\\
+}
+
+\date{\ttfamily \today}
+\tolerance 2500
+%--------------------------------- HYPERLINKS -----------------------------
+%\RequirePackage[dvipdfm,colorlinks,hyperindex]{hyperref}
+%% http://tug.ctan.org/cgi-bin/ctanPackageInformation.py?id=hyperref
+%\hypersetup{
+%    linktocpage=true,
+%    citecolor=dblue,    % color can be changed!
+%    linkcolor=dgreen    % color can be changed!
+%}
+%--------------------------------------------------------------------------
+\newcommand{\Frac}[2]{\displaystyle{\frac{#1}{#2}}} 
+\newcommand{\Scal}[2]{{\bigg\langle{{#1}\:\bigg |~{#2}}\bigg\rangle}}
+\newcommand{\scal}[2]{{\left\langle{{#1}\mid{#2}}\right\rangle}}
+\newcommand{\pscal}[2]{\langle\langle{#1}\mid{#2}\rangle\rangle} 
+\newcommand{\Menge}[2]{\Big\{{#1}~\big |~{#2}\Big\}} 
+\newcommand{\menge}[2]{\big\{{#1}~\big |~{#2}\big\}} 
+\newcommand{\moyo}[2]{\ensuremath{\sideset{^{#2}}{}{\operatorname{}}\!\!#1}}
+\newcommand{\X}{\ensuremath{{\mathcal X}}}
+\newcommand{\XX}{\ensuremath{{\mathcal X}}}
+\newcommand{\HH}{\ensuremath{{\mathcal H}}}
+\newcommand{\HHH}{\ensuremath{\boldsymbol{\mathcal H}}}
+\newcommand{\GGG}{\ensuremath{\boldsymbol{\mathcal G}}}
+\newcommand{\YYY}{\ensuremath{\boldsymbol{\mathcal Y}}}
+\newcommand{\ZZZ}{\ensuremath{\boldsymbol{\mathcal Z}}}
+\newcommand{\LLL}{\ensuremath{\boldsymbol{\mathcal L}}}
+\newcommand{\GG}{\ensuremath{{\mathcal G}}}
+\newcommand{\SSS}{\ensuremath{{\mathcal S}}}
+\newcommand{\BL}{\ensuremath{\EuScript B}\,}
+\newcommand{\SP}{\ensuremath{{\mathcal S}_+}}
+\newcommand{\emp}{\ensuremath{{\varnothing}}}
+\newcommand{\spn}{\ensuremath{\operatorname{span}}}
+\newcommand{\lev}[1]{{\ensuremath{{{{\operatorname{lev}}}_{\leq #1}}\,}}}
+\newcommand{\nabli}[1]{\nabla_{\!{#1}}\,}
+\newcommand{\Id}{\ensuremath{\operatorname{Id}}\,}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}}
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\ran}{\ensuremath{\operatorname{ran}}}
+\newcommand{\haus}{\ensuremath{\operatorname{haus}}}
+\newcommand{\bre}{\ensuremath{\operatorname{R}}}
+\newcommand{\bdry}{\ensuremath{\operatorname{bdry}}}
+\newcommand{\RP}{\ensuremath{\left[0,+\infty\right[}}
+\newcommand{\RM}{\ensuremath{\left]-\infty,0\right]}}
+\newcommand{\RMM}{\ensuremath{\left]-\infty,0\right[}}
+\newcommand{\RPP}{\ensuremath{\left]0,+\infty\right[}}
+\newcommand{\RPPX}{\ensuremath{\left]0,+\infty\right]}}
+\newcommand{\RPX}{\ensuremath{\left[0,+\infty\right]}}
+\newcommand{\RNX}{\ensuremath{\left[-\infty,0\right]}}
+\newcommand{\RXX}{\ensuremath{\left[-\infty,+\infty\right]}}
+\newcommand{\RX}{\ensuremath{\left]-\infty,+\infty\right]}}
+\newcommand{\XR}{\ensuremath{\left[-\infty,+\infty\right[}}
+\newcommand{\NN}{\ensuremath{\mathbb N}}
+\newcommand{\OO}{\ensuremath{\mathcal O}}
+\newcommand{\rr}{\ensuremath{\mathcal R}}
+\newcommand{\ind}{\ensuremath{\mathbb 1}}
+\newcommand{\KK}{\ensuremath{\mathbb K}}
+\newcommand{\JJ}{\ensuremath{\mathbb J}}
+\newcommand{\II}{\ensuremath{\mathbb I}}
+\newcommand{\LL}{\ensuremath{\mathbb L}}
+\newcommand{\cart}{\ensuremath{\raisebox{-0.5mm}
+{\mbox{\LARGE{$\times$}}}}\!}
+\newcommand{\ZZ}{\ensuremath{\mathbb Z}}
+\newcommand{\gr}{\ensuremath{\operatorname{gra}}}
+\newcommand{\exi}{\ensuremath{\exists\,}}
+\newcommand{\pinf}{\ensuremath{{+\infty}}}
+\newcommand{\minf}{\ensuremath{{-\infty}}}
+\newcommand{\weakly}{\ensuremath{\:\rightharpoonup\:}}
+\newcommand{\argmin}{\ensuremath{\operatorname{argmin}}}
+\newcommand{\Argmin}{\ensuremath{\operatorname{Argmin}}}
+\newcommand{\argmax}{\ensuremath{\operatorname{argmax}}}
+\newcommand{\Argmax}{\ensuremath{\operatorname{Argmax}}}
+\newcommand{\Fix}{\ensuremath{\operatorname{Fix}}}
+\newcommand{\dom}{\ensuremath{\operatorname{dom}}}
+\newcommand{\prox}{\ensuremath{\operatorname{prox}}}
+\newcommand{\soft}[1]{\ensuremath{{\operatorname{soft}}_{{#1}}\,}}
+\newcommand{\card}{\ensuremath{\operatorname{card}}}
+\newcommand{\minim}{\ensuremath{\operatorname{Minimize}}}
+\newcommand{\sign}{\ensuremath{\operatorname{sign}}}
+\newcommand{\sri}{\ensuremath{\operatorname{sri}}}
+\newcommand{\inte}{\ensuremath{\operatorname{int}}}
+\newcommand{\infconv}{\ensuremath{\mbox{\small$\,\square\,$}}}
+\newcommand{\zeroun}{\ensuremath{\left]0,1\right[}}   
+\newcommand{\ddp}[1]{{f}_{#1}}
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1 
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+\newcommand{\normi}{\vert\kern-0.25ex\vert\kern-0.25ex\vert}
+\newcommand\blankpage{%
+    \null
+    \thispagestyle{empty}%
+    \addtocounter{page}{-1}%
+    \newpage}
+\renewcommand{\abstractname}{Abstract}
+%-------------------------------------------------------------------------
+\def\proof{\noindent{\it Proof}. \ignorespaces}
+\def\endproof{\vbox{\hrule height0.6pt\hbox{\vrule height1.3ex% 
+width0.6pt\hskip0.8ex\vrule width0.6pt}\hrule height0.6pt}}
+%-------------------------------------------------------------------------
+\ProvideTextCommand{\DJ}{OT1}{\raisebox{0.25ex}{-}\kern-0.4em D}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+%\newtheorem{example}[theorem]{Example}
+\theoremstyle{plain}{\theorembodyfont{\rmfamily}%
+\newtheorem{assumption}[theorem]{Assumption}}
+\theoremstyle{plain}{\theorembodyfont{\rmfamily}%
+\newtheorem{algorithm}[theorem]{Algorithm}}
+\theoremstyle{plain}{\theorembodyfont{\rmfamily}%
+\newtheorem{example}[theorem]{Example}}
+\theoremstyle{plain}{\theorembodyfont{\rmfamily}%
+\newtheorem{remark}[theorem]{Remark}}
+\theoremstyle{plain}{\theorembodyfont{\rmfamily}%
+\newtheorem{definition}[theorem]{Definition}}
+\theoremstyle{plain}{\theorembodyfont{\rmfamily}%
+\newtheorem{problem}[theorem]{Problem}}
+\renewcommand\theenumi{(\roman{enumi})}
+\renewcommand\theenumii{(\alph{enumii})}
+\renewcommand{\labelenumi}{\rm (\roman{enumi})}
+\renewcommand{\labelenumii}{\rm (\alph{enumii})}
+\numberwithin{equation}{chapter}
+\newcommand{\dal}{u} 
+\newcommand{\prim}{x} 
+\newcommand{\proj}{p} 
+\newcommand{\Dal}{U} 
+\newcommand{\Prim}{X} 
+\newcommand{\Proj}{P}  
+%-------------------------------------  ------------------------------------
+\begin{document}
+\chapter{Main problem and Theorem} 
+ \begin{problem}
+\label{problema 1}
+ Let $J\colon\mathbb{R}^{p}\rightarrow\mathbb{R}\cup\{+\infty\}$, 
+which is proper, convex and lower semicontinuous. Let $A$ $n$ by $p$ matrix and $y$ an $n$-dimensional vector. Throughout, we
+assume that $n\times p$ and that the linear equation has at least one solution for the exact
+data y. For 
+every $i\in[m]$, let $T_i\colon\HH\to\HH$ be a $\alpha_{i}-$ 
+averaged nonexpansive operator, for some $\alpha_i\in\left]0,1\right[$. The 
+problem is to find $(\prim,\dal)\in (\HH\times\GG)\cap Z$, where 
+$Z$ is the 
+set of saddle points of
+\begin{equation}
+\label{e:saddle point}\tag{$\mathcal{S}$}
+\min_{\prim\in\HH}\max_{\dal\in\GG}\mathcal{L}(\prim,\dal):=J(\prim)+\scal{A\prim-b}{\dal}
+\end{equation}
+and we assume that  
+$Z:\ne\emp$.
+\end{problem} 
+Consider the following primal optimization problem 
+\begin{align}
+\tag{$\mathcal{P}$}
+\mbox{find}\,\, \prim\in\argmin_{\prim\in\HH} 
+(J(\prim)+\iota_{\{b\}}(A\prim))
+\label{equation 1.1}
+\end{align}
+and its dual problem
+\begin{align}
+\tag{$\mathcal{D}$}
+\mbox{find}\,\, \dal\in\argmin_{\dal\in\GG} 
+J^{*}(-A^{*}\dal)+\scal{b}{\dal}, 
+\label{equation 1.2}
+\end{align}
+and assume that the following qualification condition is satisfied
+\begin{align}
+\label{equation 1.10}
+0\in \sri\big(A\left(\dom J\right)-b\big).
+\end{align}
+We also consider the case where $b$ is unknown, and a vector $b^\delta$ is available such that $\|b-b^{\delta}\|\leq\delta$, where $\delta>0$ can be interpreted as the noise level. In the following, we consider the a projection scheme in which we can project one time in each equation of the system $A\prim=b^{\delta}.$ To define it, we need to define the following set
+\begin{definition}
+Let $I:=\{0,\ldots,p\}$. For $0\leq l\leq p$ we define 
+\begin{align}
+    D_{l}:=\left\{(\prim_i)_{i=1}^{l}\in I^l\mid \prim_i\neq \prim_j \text{ $\iff$ }i\neq j\right\} 
+\end{align}
+\end{definition}
+\begin{definition}
+\label{D: Multproj}
+ For every $\alpha>0$ and $i \in I$, we define, for every $\left(l(j)\right)_{j=1}^{p_i}\in D_{p_i},$ a 
+\begin{align}
+  T^{\alpha}_i:=\bar{P}^{\alpha}_{l(1)}\circ\ldots\circ \bar{P}^{\alpha}_{l(p_{i}}
+    \label{d: averaged1}
+\end{align} where for ever $l\in \{1,\ldots, n\}$
+\begin{align}
+    \bar{P}^{\alpha}_{l}(\prim):&\mathbb{R}^p \mapsto \mathbb{R}^p\nonumber\\& \prim\hspace{2mm} \mapsto  \left\{ \begin{array}{ll} \prim+\frac{b_{l}+\alpha-\scal{a_l}{\prim}}{\|a_{l}\|^2}a_{l}
+             &  \text{if }  \scal{a_l}{\prim} \geq b_l+\alpha \\
+             \\ \prim+\frac{b_{l}-\alpha-\scal{a_l}{\prim}}{\|a_{l}\|^2}a_{l}
+             &  \text{if  }\scal{a_l}{\prim} \leq b_l-\alpha \\
+             \\ \prim &  \text{otherwise.}
+             \end{array}\right.
+    \label{e: linearpro1}
+\end{align}
+\end{definition}
+Analogously, for every $i\in I$, we denote by $T^{\alpha}_{i}$ and $P^\alpha_l$, if in the definition \ref{D: Multproj}  we use $b^\delta$ instead of $b$. 
+\begin{lemma}
+\label{L: strutured error}
+For every $i\in I$ and $y\in S$  we have
+\begin{align}
+    \|T^{\alpha}_{i}\prim-y\|^2\leq \|\prim-y\|^2+\left(e\delta\right)^2
+\end{align}
+where  $e:=\sqrt{\sum_{i=1}^{p}\frac{1}{\|a_{i}\|^2}}$ if $\alpha=0$ and $e=0$ if $\alpha=\delta$.
+\end{lemma}
+\begin{proof}    Let us first prove the case when $\alpha<\delta$, for $n\in\{1,\dots,p_i\}$, define $\prim_n=P^\alpha_{l(n)}\circ\ldots\circ P^\alpha_{l(p_i)}$  
+It follows from \eqref{d: averaged1} and \eqref{e: linearpro1} that
+\begin{align}
+    \|T^\alpha_{i}\prim-y\|^2= \|\prim_{1}-y\|^2=&\|P^\alpha_{l(1)}\prim_{2}-y\|^2\nonumber\\=&\|\bar{P}^{\alpha}_{l(1)}\prim_{2}-y\|^2+2\scal{\bar{P}^{\alpha}_{l(1)}\prim_{2}-y}{P^{\alpha}_{l(1)}\prim_{2}-P_{l(1)}\prim_{2}}\nonumber\\&+\|P^{\alpha}_{l(1)}\prim_{2}-\bar{P}^{\alpha}_{l(1)}\prim_{2}\|^2\nonumber\\=&\|\bar{P}^{\alpha}_{l(1)}\prim_{2}-y\|^2+\|P^{\alpha}_{l(1)}\prim_{2}-\bar{P}^{\alpha}_{l(1)}\prim_{2}\|^2,
+    \label{E:Pitagoras_1}
+    \end{align}
+    similarly,
+    \begin{align}
+        \|\prim_2-y\|^2=&\|\prim_2-\bar{P}^{\alpha}_{l(1)}\prim_2\|^2+2\scal{\prim_2-\bar{P}^{\alpha}_{l(1)}\prim_2}{\bar{P}^{\alpha}_{l(1)}\prim_2-y}+\|\bar{P}^{\alpha}_{l(1)}\prim_2-y\|^2\nonumber\\=&\|\prim_2-\bar{P}^{\alpha}_{l(1)}\prim_2\|^2+\|\bar{P}^{\alpha}_{l(1)}\prim_2-y\|^2.
+        \label{E:Pitagoras_2}
+    \end{align}
+    It follows from \eqref{E:Pitagoras_1} and \eqref{E:Pitagoras_2} that
+    \begin{align}
+        \|P^{\alpha}_{l(1)}\prim_2-y\|^2+\|\prim_2-\bar{P}^{\alpha}_{l(1)}\prim_2\|^2=\|\prim_2-y\|^2+\|P^{\alpha}_{l(1)}\prim_{2}-\bar{P}^{\alpha}_{l(1)}\prim_{2}\|^2
+    \end{align}
+    then using the young inequality we obtain
+    \begin{align}
+        \|P^{\alpha}_{l(1)}\prim_2-y\|^2&\leq\|\prim_2-y\|^2+\|P^{\alpha}_{l(1)}\prim_{2}-\bar{P}^{\alpha}_{l(1)}\prim_{2}\|^2\nonumber\\ &\leq \|\prim_2-y\|^2+\frac{\left(|b^{\alpha}_{l(1)}-b_{l(1)}|+\alpha\right)^2}{\|a_{l(1)}\|^2}
+    \end{align}
+and by induction
+\begin{align}
+\|T^\delta_{i}\prim-y\|^2&\leq\|\prim-y\|^2+\sum_{i=1}^{p}\frac{(b^{\delta}_{l(i)}-b_{l(i)})^2}{\|a_{l(i)}\|^2}\nonumber\\&\leq\|\prim-y\|^2+(e\delta)^2.
+\end{align}In the case when $\alpha=\delta$, the results follow from the non-expansiveness of a composition of projections and $y\in S=\bigcap\limits_{i\in I}\Fix T_{i}$.
+\end{proof}
+\\ \\Equalities and inequalities involving random variables will always be understood to hold $\mathbb{P}$-almost surely, even if the expression “$\mathbb{P}$-a.s.” is not explicitly written.
+\begin{theorem}
+\label{T:  Inexalg}
+Let $\tau>0$, $\gamma>0$, and $\beta>0$ such that \begin{align}
+   \|A\|^2<\frac{1}{\tau\gamma}.
+    \label{c: ConditionL}
+\end{align} Let $(\proj^0,\proj^{-1}, \prim^{0},\dal^0)\in 
+\mathcal{H}\times\mathcal{H}\times\mathcal{H}\times\mathcal{G}$ be such that 
+$\prim^0=\proj^0=\proj^{-1}$. Let 
+$(\epsilon_k)_{ k\in \mathbb{N}}$ and $(e)_{ k\in \mathbb{N}}$ be a sequence of independent 
+random variables such that,  for every 
+$k\in\NN$, $\epsilon_k(\Omega)= I_{k}\subset I$ and 
+consider the following routine
+\begin{align}
+(\forall k\in\NN)\hspace{0.2cm}
+&\left\lfloor 
+\begin{array}{ll}
+\dal^{k+1}= \dal^k+\gamma\left( A\bar{\proj}^k-b^\delta\right)\\
+\prim^{k+1}=\prox_{\tau J}(\proj^k-\tau( A^*\dal^{k+1}))\\
+\proj^{k+1}=T_{\epsilon_{k+1}}\prim^{k+1}\\
+\bar{\proj}^{k+1}=
+\proj^{k+1}+ \prim^{k+1}-\proj^{k},
+\label{equation 4.1}
+\end{array}
+\right.
+\end{align}
+where, $T_{i}$ is defined as in Lemma \ref{L: strutured error}, for every $i\in I$.
+Then, for every  $(\proj,\dal)\in Z$, we have that 
+ \begin{align}
+    \mathcal{L}\left(\Prim^{N},\dal\right)- \mathcal{L}\left(\prim,\Dal^{N}\right)\leq\frac{1}{N} \left(N\delta\left(\frac{2\gamma}{\alpha}\right)^{\frac{1}{2}}+V(z^{0}-z)^{\frac{1}{2}}+e\delta\sqrt{\frac{N}{2\tau}}\right)^2 \hspace{2mm}\text{  $\mathbb{P}$-a.s.}\end{align}
+where $V(z^{0}-z)=\frac{\|\proj^0-\proj\|^2}{2\tau}+\frac{\|\dal^0-\dal\|^2}{2\gamma}$ and for every $v\in ]0,1[$, we have \begin{align}
+        \|A\Prim^N-b\|^2\leq&\frac{8N\delta^2}{\alpha^{2}(1-\upsilon)}+\frac{4\delta}{(1-\upsilon)}\left(\frac{2 V(z^{0}-z)}{\gamma\alpha^3}\right)^{\frac{1}{2}}+\frac{4N\delta^2e}{(1-\upsilon)}\left(\frac{ 1}{\gamma\tau\alpha^3}\right)^{\frac{1}{2}}\nonumber\\&+\frac{4}{N\gamma\alpha(1-\upsilon)}V(z^{0}-z)+\frac{\delta^2}{\upsilon}+\frac{2(e\delta)^2}{\alpha\tau\gamma(1-v)}&\text{  $\mathbb{P}$-a.s.}
+    \end{align}
+    where, for every $n\in\NN$, $\left(\Prim^n,\Dal^n\right):=\left(\frac{\sum_{k=1}^{n}\prim^{k}}{n},\frac{\sum_{k=1}^{n}\dal^{k}}{n}\right)$  and $\alpha:=1-\tau\gamma\|A\|^2>0$.
+\end{theorem}
+\begin{proof}
+It follow from \eqref{equation 4.1} that
+\begin{align}
+    \frac{\proj^k-\prim^{k+1}}{\tau}- A^*\dal^{k+1}&\in\partial J(\prim^{k+1})\nonumber\\
+   \frac{\dal^k-\dal^{k+1}}{\gamma}+A\bar{\proj}^k &=b^{\delta}
+\end{align}
+Thus, we have
+\begin{align}
+    J(\prim^{k+1})+\scal{\frac{\proj^k-\prim^{k+1}}{\tau}- A^*\dal^{k+1}}{\prim-\prim^{k+1}}\leq J(\prim)
+    \label{e:subdif}
+\end{align} and \eqref{e:subdif} yields
+\begin{align}
+         0\geq&2\tau \left(J(\prim^{k+1})-J(\prim)\right)+2\scal{\proj^k-\prim^{k+1}- \tau A^*\dal^{k+1}}{\prim-\prim^{k+1}}\nonumber\\ =& 2\tau \left(J(\prim^{k+1})-J(\prim)\right)+\|\proj^k-\prim^{k+1}-\tau A^*\dal^{k+1}\|^2+\|\prim^{k+1}-\prim\|^2-\|\proj^k-\prim-\tau A^*\dal^{k+1}\|^2
+                  \nonumber\\= & 2\tau \left(J(\prim^{k+1})-J(\prim)\right)+\|\proj^k-\prim^{k+1}\|^2-2\tau\scal{\proj^k-\prim^{k+1}}{A^*\dal^{k+1}}+\|\prim^{k+1}-\prim\|^2&\nonumber\\&-\|\proj^k-\prim\|^2+2\tau\scal{\proj^k-\prim}{A^*\dal^{k+1}}  \nonumber\\ =&2\tau \left(J(\prim^{k+1})-J(\prim)\right)+\|\proj^k-\prim^{k+1}\|^2+\|\prim^{k+1}-\prim\|^2\nonumber\\&-\|\proj^k-\prim\|^2+2\tau\scal{\prim^{k+1}-\prim}{A^*\dal^{k+1}} 
+                 \label{e: psub}
+\end{align}
+Analogously,
+\begin{align}
+    2\scal{\dal^k-\dal^{k+1}+\gamma A\bar{\proj}^k}{\dal-\dal^{k+1}}+2\gamma\scal{b^\delta}{\dal^{k+1}-\dal}&=0\nonumber\\ \|\dal^{k+1}-\dal^{k}\|^2+\|\dal^{k+1}-\dal\|^2-\|\dal^{k}-\dal\|^2+2\gamma\scal{ A\bar{\proj}^k}{\dal-\dal^{k+1}}+2\gamma\scal{b^\delta}{\dal^{k+1}-\dal}&=0\nonumber\\ \|\dal^{k+1}-\dal^{k}\|^2+\|\dal^{k+1}-\dal\|^2-\|\dal^{k}-\dal\|^2+2\gamma\scal{b^{\delta}-A\bar{\proj}^k}{\dal^{k+1}-\dal}&=0\label{e: dsub}
+\end{align}
+Recall that $z:=(\prim,\dal)$ and define  $V(z):=\frac{\|\prim\|^2}{2\tau}+\frac{\|\dal\|^2}{2\gamma}$. Dividing \eqref{e: psub} by $2\tau$, \eqref{e: dsub} by $2\gamma$ and by Lemma \ref{L: strutured error} we obtain 
+\begin{align}
+         J(\prim^{k+1})-J(\prim)+\frac{\|\prim^{k+1}-\proj^k\|^2}{2\tau} +\frac{\|\dal^{k+1}-\dal^{k}\|^2}{2\gamma}+V(z^{k+1}-z)-V(z^{k}-z)&\nonumber\\+\scal{A(\prim^{k+1}-\prim)}{\dal^{k+1}} +\scal{b^{\delta}-A\bar{\proj}^k}{\dal^{k+1}-\dal}-\frac{\left(e\delta\right)^2}{2\tau}&\leq 0\label{e: prestimate}
+    \end{align}
+    Now compute 
+    \begin{align}
+        & J(\prim^{k+1})-J(\prim)+\scal{A(\prim^{k+1}-\prim)}{\dal^{k+1}} +\scal{b^{\delta}-A\bar{\proj}^k}{\dal^{k+1}-\dal}\nonumber\\ =&\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})-\scal{A\prim^{k+1}-b}{\dal}+\scal{A\prim-b}{\dal^{k+1}}\nonumber\\&+\scal{A(\prim^{k+1}-\prim)}{\dal^{k+1}} +\scal{b^{\delta}-A\bar{\proj}^k}{\dal^{k+1}-\dal}\nonumber\\ =&\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})-\scal{A\prim^{k+1}}{\dal}+\scal{b}{\dal}+\scal{A\prim}{\dal^{k+1}}-\scal{b}{\dal^{k+1}}\nonumber\\&+\scal{A\prim^{k+1}}{\dal^{k+1}}-\scal{A\prim}{\dal^{k+1}} +\scal{b^\delta}{\dal^{k+1}-\dal}-\scal{A\bar{\proj}^k}{\dal^{k+1}-\dal}\nonumber\\ =&\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})+\scal{b^{\delta}-b}{\dal^{k+1}-\dal} +\scal{A\prim^{k+1}-A\bar{\proj}^k}{\dal^{k+1}-\dal}\nonumber\\ \geq&\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})-\delta\|\dal^{k+1}-\dal\| +\scal{A\prim^{k+1}-A\bar{\proj}^k}{\dal^{k+1}-\dal}.
+        \label{e: lagrange}
+    \end{align}
+   From \eqref{e: lagrange} and \eqref{e: prestimate} we obtain
+\begin{align}
+        &\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})+\frac{\|\prim^{k+1}-\proj^k\|^2}{2\tau} +\frac{\|\dal^{k+1}-\dal^{k}\|^2}{2\gamma}\nonumber\\&+V(z^{k+1}-z)-V(z^{k}-z)-\delta\|\dal^{k+1}-\dal\|-\frac{\left(e\delta\right)^2}{2\tau}\nonumber\\ \leq& -\scal{A\prim^{k+1}-A\bar{\proj}^k}{\dal^{k+1}-\dal} \nonumber\\ \leq& -\scal{A(\prim^{k+1}-\proj^{k})}{\dal^{k+1}-\dal}+\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k}-\dal} \nonumber\\ &+\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k+1}-\dal^k}\label{e: lagrangeI.5}\\  \leq& -\scal{A(\prim^{k+1}-\proj^{k})}{\dal^{k+1}-\dal}+\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k}-\dal} \nonumber\\ &+\frac{\tau\|A\|^2}{2}\|\dal^{k+1}-\dal^k\|^2+\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}\label{e: lagrangeI}
+    \end{align}
+   Then we have the following estimate:
+\begin{align}
+        &\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})+\frac{\|\prim^{k+1}-\proj^{k}\|}{2\tau}-\frac{\|\prim^{k}-\proj^{k-1}\|}{2\tau}\nonumber\\&+\frac{\alpha}{2\gamma}\|\dal^{k+1}-\dal^k\|^2+V(z^{k+1}-z)-V(z^{k}-z)\nonumber\\ \leq& \delta\|\dal^{k+1}-\dal\| -\scal{A(\prim^{k+1}-\proj^{k})}{\dal^{k+1}-\dal} +\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k}-\dal}+\frac{(e\delta)^2}{2\tau}
+        \label{e: lagrangeII}
+    \end{align}
+    Summing from $0,\ldots,N-1$ and using $\prim^0=\proj^{-1}$ we obtain 
+    \begin{align}
+        &\sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)+\frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}\nonumber\\&+\frac{\alpha}{2\gamma}\sum_{k=1}^{N}\|\dal^{k}-\dal^{k-1}\|^2+V(z^{N}-z)-V(z^{0}-z) \nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\| -\scal{A(\prim^{N}-\proj^{N-1})}{\dal^{N}-\dal}+\frac{N(e\delta)^2}{2\tau}\nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\| +\frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\tau\|A\|^2}{2}\|\dal^{N}-\dal\|^2+\frac{N(e\delta)^2}{2\tau}
+        \label{e: lagrangeIII.5}
+    \end{align}
+    Reordering \eqref{e: lagrangeIII.5} we obtain
+     \begin{align}
+        &\sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)+\frac{\alpha}{2\gamma}\sum_{k=1}^{N}\|\dal^{k}-\dal^{k-1}\|^2\nonumber\\&+\frac{\alpha}{2\gamma}\|\dal^{N}-\dal\|^2+\frac{\|\prim^{N}-\prim\|^2}{2\tau} \nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\|+V(z^{0}-z)+\frac{N(e\delta)^2}{2\tau}
+        \label{e: lagrangeIV.5}
+    \end{align}
+ On the other hand, by \eqref{e: lagrangeI.5} we have the following estimate:
+\begin{align}
+        &\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})+V(z^{k+1}-z)-V(z^{k}-z)\nonumber\\&+\frac{\|\prim^{k+1}-\proj^{k}\|^2}{2\tau}-\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k+1}-\dal^k}+\frac{\|\dal^{k+1}-\dal^k\|^2}{2\gamma}\nonumber\\ \leq& \delta\|\dal^{k+1}-\dal\| -\scal{A(\prim^{k+1}-\proj^{k})}{\dal^{k+1}-\dal} \nonumber\\&+\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k}-\dal}+\frac{(e\delta)^2}{2\tau}
+        \label{e: lagrangeII.5}
+    \end{align}
+    Summing from $0,\ldots,N-1$ and using $\prim^0=\proj^{-1}$ we obtain 
+    \begin{align}
+        &\sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)+V(z^{N}-z)-V(z^{0}-z)\nonumber\\&+\sum_{k=1}^{N}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\scal{A(\prim^{k-1}-\proj^{k-2})}{\dal^{k}-\dal^{k-1}}+\frac{\|\dal^{k}-\dal^{k-1}\|^2}{2\gamma}\right) \nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\| -\scal{A(\prim^{N}-\proj^{N-1})}{\dal^{N}-\dal}+\frac{N(e\delta)^2}{2\tau}\nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\| +\frac{\tau\gamma\|A\|^2}{2\tau}\|\prim^{N}-\proj^{N-1}\|^2+\frac{\|\dal^{N}-\dal\|^2}{2\gamma}+\frac{N(e\delta)^2}{2\tau}
+        \label{e: lagrangeIII}
+    \end{align}
+    Now, since $\dal^{k+1}-\dal^{k}=\gamma\left(A\bar{\proj}^k-b^\delta\right)$, $\tau\gamma\|A\|^2<1$, and the convexity of $\|\cdot\|^2$ we compute
+    \begin{align}
+   &\sum_{k=1}^{N}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\scal{A(\prim^{k-1}-\proj^{k-2})}{\dal^{k}-\dal^{k-1}}+\frac{\|\dal^{k}-\dal^{k-1}\|^2}{2\gamma}\right)   \nonumber\\ =&  \sum_{k=1}^{N-1}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k+1}-\dal^{k}}+\frac{\|\dal^{k+1}-\dal^{k}\|^2}{2\gamma}\right)\nonumber\\&+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\|\dal^{1}-\dal^{0}\|^2}{2\gamma}\nonumber\\=&  \sum_{k=1}^{N-1}\left(\frac{\gamma}{2}\|A(\prim^{k}-\proj^{k-1})\|^2-\gamma\scal{A(\prim^{k}-\proj^{k-1})}{A\bar{\proj}^k-b^{\delta}}+\frac{\gamma}{2}\|A\bar{\proj}^k-b^{\delta}\|^2\right)\nonumber\\&+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\|\dal^{1}-\dal^{0}\|^2}{2\gamma}+\sum_{k=1}^{N-1}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\frac{\gamma}{2}\|A(\prim^{k}-\proj^{k-1})\|^2\right)\nonumber\\=&  \sum_{k=1}^{N-1}\frac{\gamma}{2}\|A\proj^k-b^{\delta}\|^2+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\|\dal^{1}-\dal^{0}\|^2}{2\gamma}\nonumber\\&+\sum_{k=1}^{N-1}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\frac{\gamma}{2}\|A(\prim^{k}-\proj^{k-1})\|^2\right)\nonumber\\\geq&  \sum_{k=1}^{N-1}\frac{\gamma}{2}\|A\proj^k-b^{\delta}\|^2+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\|\dal^{1}-\dal^{0}\|^2}{2\gamma}+\sum_{k=1}^{N-1}\frac{\gamma\alpha}{2}\|A(\prim^{k}-\proj^{k-1})\|^2\nonumber\\\geq&  \sum_{k=1}^{N-1}\frac{\gamma}{2}\|A\proj^k-b^{\delta}\|^2+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\gamma}{2}\|A\proj^0-b^{\delta}\|^2\nonumber\\&+\sum_{k=1}^{N-1}\frac{\gamma\alpha}{2}\|A(\prim^{k+1}-\proj^{k})\|^2-\frac{\gamma\alpha}{2}\|A(\prim^{N}-\proj^{N-1})\|^2+\frac{\gamma\alpha}{2}\|A(\prim^{1}-\proj^{0})\|^2\nonumber\\\geq&  \sum_{k=1}^{N}\frac{\alpha\gamma}{4}\|A\prim^{k}-b^{\delta}\|^2+\frac{1-\tau\gamma\|A\|^2\alpha}{2\tau}\|\prim^{N}-\proj^{N-1}\|^2,
+    \end{align}
+and for every $\upsilon\in ]0,1[$ we get
+    \begin{align}
+      \|A\prim^k-b^\delta\|^2 =&\|A\prim^k-b\|^2+\|b^{\delta}-b\|^2-2\scal{A\prim^k-b}{b^{\delta}-b}\nonumber\\\geq&(1-\upsilon)\|A\prim^k-b\|^2-\frac{(1-\upsilon)}{\upsilon}\|b^\delta-b\|^2.
+        \label{e: Axsep}
+    \end{align}
+    Reordering \eqref{e: lagrangeIII} we obtain
+     \begin{align}
+        &\sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)+\frac{\alpha^2}{2\tau}\|\prim^{N}-\proj^{N-1}\|^2\nonumber\\&\sum_{k=1}^{N}\frac{\alpha\gamma(1-\upsilon)}{4}\|A\prim^{k}-b\|^2+\frac{\|\prim^{N}-\prim\|^2}{2\tau} \nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\|+V(z^{0}-z)+\frac{N(e\delta)^2}{2\tau}+N\frac{\gamma\alpha(1-\upsilon)}{4\upsilon}\delta^2
+        \label{e: lagrangeIV}
+    \end{align}
+    It remains to bound $\delta\sum_{k=1}^{N}\|\dal^{k}-\dal\|$, then from \eqref{e: lagrangeIV.5} 
+    \begin{align}
+     \|\dal^{N}-\dal\|^2\leq\frac{2\gamma\delta}{\alpha}  \sum_{k=1}^{N}\|\dal^{k}-\dal\|+\frac{2\gamma V(z^{0}-z)}{\alpha}+\frac{\gamma N(e\delta)^2}{\tau\alpha} ,
+        \label{e: U bound}
+    \end{align}
+    Apply \cite[Lemma A.1]{Chabolle-Rash} to Equation \eqref{e: U bound} with $\lambda_{k}:=\frac{2\gamma\delta}{\alpha} $ and $S_{k}:= \frac{2\gamma V(z^{0}-z)}{\alpha}+\frac{\gamma N(e\delta)^2}{\tau\alpha}$  to get
+    \begin{align}
+      \|\dal^{N}-\dal\|\leq& \frac{N\gamma\delta}{\alpha}+\left(\frac{2\gamma V(z^{0}-z)}{\alpha}+\frac{\gamma N(e\delta)^2}{\tau\alpha}+\left(\frac{N\gamma\delta}{\alpha}\right)^2\right)^{\frac{1}{2}}\nonumber\\\leq& \frac{2N\gamma\delta}{\alpha}+\left(\frac{2\gamma V(z^{0}-z)}{\alpha}\right)^{\frac{1}{2}}+\left(\frac{\gamma N(e\delta)^2}{\tau\alpha}\right)^{\frac{1}{2}}
+    \end{align}
+    Insert the latter in Equation \eqref{e: lagrangeIV.5}, to obtain
+     \begin{align}
+        \sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)\leq& \frac{2N^2\gamma\delta^2}{\alpha}+N\delta\left(\frac{2\gamma V(z^{0}-z)}{\alpha}\right)^{\frac{1}{2}}+N\delta\left(\frac{\gamma N(e\delta)^2}{\tau\alpha}\right)^{\frac{1}{2}}\nonumber\\ &+V(z^{0}-z)+\frac{N(e\delta)^2}{2\tau}\nonumber\\\leq& \left(N\delta\left(\frac{2\gamma}{\alpha}\right)^{\frac{1}{2}}+V(z^{0}-z)^{\frac{1}{2}}+e\delta\sqrt{\frac{N}{2\tau}}\right)^2
+        \label{e: lagrangeV}
+    \end{align}
+    
+    Analogously from \eqref{e: lagrangeIV}
+    \begin{align}
+         \sum_{k=1}^{N}\|A\prim^k-b\|^2\leq&\frac{8N^2\delta^2}{\alpha^{2}(1-\upsilon)}+\frac{4N\delta}{(1-\upsilon)}\left(\frac{2 V(z^{0}-z)}{\gamma\alpha^3}\right)^{\frac{1}{2}}+\frac{4N^2\delta^2e}{(1-\upsilon)}\left(\frac{ 1}{\gamma\tau\alpha^3}\right)^{\frac{1}{2}}\nonumber\\&+\frac{4}{\gamma\alpha(1-\upsilon)}V(z^{0}-z)+N\frac{\delta^2}{\upsilon}+\frac{2N(e\delta)^2}{\alpha\tau\gamma(1-v)}
+    \end{align}
+    and both results follows from the Jensen's inequality.
+\end{proof}
+\begin{corollary} (Early-stopping). Under the assumptions of Theorem \ref{T:  Inexalg}, choose $N=\frac{c}{\delta}$ for some $c>0$. Then there exist constants $C_1$, $C_2$, and $C_3$ such that
+ \begin{align}
+    \mathcal{L}\left(\Prim^{N},\dal\right)- \mathcal{L}\left(\proj,\Dal^{N}\right)\leq&   C_1\delta\nonumber\\
+        \|A\Prim^N-b\|^2\leq& C_2\delta+ C_3\delta^2
+    \end{align}
+
+\end{corollary}
+\begin{thebibliography}{99}
+\setlength{\itemsep}{1pt}
+\bibitem{Chabolle-Rash}
+ Chambolle, A., Rasch, J.: Inexact first‑order primal–dual algorithms.Computational Optimization and Applications. {76}, 381–430 (2020)
+\end{thebibliography}
+\end{document}
