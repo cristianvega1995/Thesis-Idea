@@ -271,239 +271,85 @@ width0.6pt\hskip0.8ex\vrule width0.6pt}\hrule height0.6pt}}
 \newcommand{\Proj}{P}  
 %-------------------------------------  ------------------------------------
 \begin{document}
-\chapter{Main problem and Theorem} 
+\chapter{Randomized BA} 
  \begin{problem}
 \label{problema 1}
- Let $J\colon\mathbb{R}^{p}\rightarrow\mathbb{R}\cup\{+\infty\}$, 
-which is proper, convex and lower semicontinuous. Let $A$ $n$ by $p$ matrix and $y$ an $n$-dimensional vector. Throughout, we
-assume that $n\times p$ and that the linear equation has at least one solution for the exact
-data y. For 
-every $i\in[m]$, let $T_i\colon\HH\to\HH$ be a $\alpha_{i}-$ 
-averaged nonexpansive operator, for some $\alpha_i\in\left]0,1\right[$. The 
-problem is to find $(\prim,\dal)\in (\HH\times\GG)\cap Z$, where 
-$Z$ is the 
-set of saddle points of
-\begin{equation}
-\label{e:saddle point}\tag{$\mathcal{S}$}
-\min_{\prim\in\HH}\max_{\dal\in\GG}\mathcal{L}(\prim,\dal):=J(\prim)+\scal{A\prim-b}{\dal}
-\end{equation}
-and we assume that  
-$Z:\ne\emp$.
-\end{problem} 
-Consider the following primal optimization problem 
+Let $A\in\RR^{d\times p}$ and $b\in\RR^p$. For every $i\in I:=\{1,\dots,N\}$, let  $\{B_{k}\}_{i=1}^{N}\in\RR^{p\times d}$. $b\in\RR^p$. The problem is to find $\bar{x}\in \RR^{p}$ such that
 \begin{align}
-\tag{$\mathcal{P}$}
-\mbox{find}\,\, \prim\in\argmin_{\prim\in\HH} 
-(J(\prim)+\iota_{\{b\}}(A\prim))
-\label{equation 1.1}
+    (\forall i\in I)\hspace{3mm} \bar{x}\in S_i:=\{x\in \RR^{p}\mid B_i Ax=B_i b\},
 \end{align}
-and its dual problem
-\begin{align}
-\tag{$\mathcal{D}$}
-\mbox{find}\,\, \dal\in\argmin_{\dal\in\GG} 
-J^{*}(-A^{*}\dal)+\scal{b}{\dal}, 
-\label{equation 1.2}
-\end{align}
-and assume that the following qualification condition is satisfied
-\begin{align}
-\label{equation 1.10}
-0\in \sri\big(A\left(\dom J\right)-b\big).
-\end{align}
-We also consider the case where $b$ is unknown, and a vector $b^\delta$ is available such that $\|b-b^{\delta}\|\leq\delta$, where $\delta>0$ can be interpreted as the noise level. In the following, we consider the a projection scheme in which we can project one time in each equation of the system $A\prim=b^{\delta}.$ To define it, we need to define the following set
-\begin{definition}
-Let $I:=\{0,\ldots,p\}$. For $0\leq l\leq p$ we define 
-\begin{align}
-    D_{l}:=\left\{(\prim_i)_{i=1}^{l}\in I^l\mid \prim_i\neq \prim_j \text{ $\iff$ }i\neq j\right\} 
-\end{align}
-\end{definition}
-\begin{definition}
-\label{D: Multproj}
- For every $\alpha>0$ and $i \in I$, we define, for every $\left(l(j)\right)_{j=1}^{p_i}\in D_{p_i},$ a 
-\begin{align}
-  T^{\alpha}_i:=\bar{P}^{\alpha}_{l(1)}\circ\ldots\circ \bar{P}^{\alpha}_{l(p_{i}}
-    \label{d: averaged1}
-\end{align} where for ever $l\in \{1,\ldots, n\}$
-\begin{align}
-    \bar{P}^{\alpha}_{l}(\prim):&\mathbb{R}^p \mapsto \mathbb{R}^p\nonumber\\& \prim\hspace{2mm} \mapsto  \left\{ \begin{array}{ll} \prim+\frac{b_{l}+\alpha-\scal{a_l}{\prim}}{\|a_{l}\|^2}a_{l}
-             &  \text{if }  \scal{a_l}{\prim} \geq b_l+\alpha \\
-             \\ \prim+\frac{b_{l}-\alpha-\scal{a_l}{\prim}}{\|a_{l}\|^2}a_{l}
-             &  \text{if  }\scal{a_l}{\prim} \leq b_l-\alpha \\
-             \\ \prim &  \text{otherwise.}
-             \end{array}\right.
-    \label{e: linearpro1}
-\end{align}
-\end{definition}
-Analogously, for every $i\in I$, we denote by $T^{\alpha}_{i}$ and $P^\alpha_l$, if in the definition \ref{D: Multproj}  we use $b^\delta$ instead of $b$. 
-\begin{lemma}
-\label{L: strutured error}
-For every $i\in I$ and $y\in S$  we have
-\begin{align}
-    \|T^{\alpha}_{i}\prim-y\|^2\leq \|\prim-y\|^2+\left(e\delta\right)^2
-\end{align}
-where  $e:=\sqrt{\sum_{i=1}^{p}\frac{1}{\|a_{i}\|^2}}$ if $\alpha=0$ and $e=0$ if $\alpha=\delta$.
-\end{lemma}
-\begin{proof}    Let us first prove the case when $\alpha<\delta$, for $n\in\{1,\dots,p_i\}$, define $\prim_n=P^\alpha_{l(n)}\circ\ldots\circ P^\alpha_{l(p_i)}$  
-It follows from \eqref{d: averaged1} and \eqref{e: linearpro1} that
-\begin{align}
-    \|T^\alpha_{i}\prim-y\|^2= \|\prim_{1}-y\|^2=&\|P^\alpha_{l(1)}\prim_{2}-y\|^2\nonumber\\=&\|\bar{P}^{\alpha}_{l(1)}\prim_{2}-y\|^2+2\scal{\bar{P}^{\alpha}_{l(1)}\prim_{2}-y}{P^{\alpha}_{l(1)}\prim_{2}-P_{l(1)}\prim_{2}}\nonumber\\&+\|P^{\alpha}_{l(1)}\prim_{2}-\bar{P}^{\alpha}_{l(1)}\prim_{2}\|^2\nonumber\\=&\|\bar{P}^{\alpha}_{l(1)}\prim_{2}-y\|^2+\|P^{\alpha}_{l(1)}\prim_{2}-\bar{P}^{\alpha}_{l(1)}\prim_{2}\|^2,
-    \label{E:Pitagoras_1}
-    \end{align}
-    similarly,
-    \begin{align}
-        \|\prim_2-y\|^2=&\|\prim_2-\bar{P}^{\alpha}_{l(1)}\prim_2\|^2+2\scal{\prim_2-\bar{P}^{\alpha}_{l(1)}\prim_2}{\bar{P}^{\alpha}_{l(1)}\prim_2-y}+\|\bar{P}^{\alpha}_{l(1)}\prim_2-y\|^2\nonumber\\=&\|\prim_2-\bar{P}^{\alpha}_{l(1)}\prim_2\|^2+\|\bar{P}^{\alpha}_{l(1)}\prim_2-y\|^2.
-        \label{E:Pitagoras_2}
-    \end{align}
-    It follows from \eqref{E:Pitagoras_1} and \eqref{E:Pitagoras_2} that
-    \begin{align}
-        \|P^{\alpha}_{l(1)}\prim_2-y\|^2+\|\prim_2-\bar{P}^{\alpha}_{l(1)}\prim_2\|^2=\|\prim_2-y\|^2+\|P^{\alpha}_{l(1)}\prim_{2}-\bar{P}^{\alpha}_{l(1)}\prim_{2}\|^2
-    \end{align}
-    then using the young inequality we obtain
-    \begin{align}
-        \|P^{\alpha}_{l(1)}\prim_2-y\|^2&\leq\|\prim_2-y\|^2+\|P^{\alpha}_{l(1)}\prim_{2}-\bar{P}^{\alpha}_{l(1)}\prim_{2}\|^2\nonumber\\ &\leq \|\prim_2-y\|^2+\frac{\left(|b^{\alpha}_{l(1)}-b_{l(1)}|+\alpha\right)^2}{\|a_{l(1)}\|^2}
-    \end{align}
-and by induction
-\begin{align}
-\|T^\delta_{i}\prim-y\|^2&\leq\|\prim-y\|^2+\sum_{i=1}^{p}\frac{(b^{\delta}_{l(i)}-b_{l(i)})^2}{\|a_{l(i)}\|^2}\nonumber\\&\leq\|\prim-y\|^2+(e\delta)^2.
-\end{align}In the case when $\alpha=\delta$, the results follow from the non-expansiveness of a composition of projections and $y\in S=\bigcap\limits_{i\in I}\Fix T_{i}$.
-\end{proof}
-\\ \\Equalities and inequalities involving random variables will always be understood to hold $\mathbb{P}$-almost surely, even if the expression “$\mathbb{P}$-a.s.” is not explicitly written.
-\begin{theorem}
-\label{T:  Inexalg}
-Let $\tau>0$, $\gamma>0$, and $\beta>0$ such that \begin{align}
-   \|A\|^2<\frac{1}{\tau\gamma}.
-    \label{c: ConditionL}
-\end{align} Let $(\proj^0,\proj^{-1}, \prim^{0},\dal^0)\in 
-\mathcal{H}\times\mathcal{H}\times\mathcal{H}\times\mathcal{G}$ be such that 
-$\prim^0=\proj^0=\proj^{-1}$. Let 
-$(\epsilon_k)_{ k\in \mathbb{N}}$ and $(e)_{ k\in \mathbb{N}}$ be a sequence of independent 
-random variables such that,  for every 
-$k\in\NN$, $\epsilon_k(\Omega)= I_{k}\subset I$ and 
-consider the following routine
-\begin{align}
-(\forall k\in\NN)\hspace{0.2cm}
-&\left\lfloor 
-\begin{array}{ll}
-\dal^{k+1}= \dal^k+\gamma\left( A\bar{\proj}^k-b^\delta\right)\\
-\prim^{k+1}=\prox_{\tau J}(\proj^k-\tau( A^*\dal^{k+1}))\\
-\proj^{k+1}=T_{\epsilon_{k+1}}\prim^{k+1}\\
-\bar{\proj}^{k+1}=
-\proj^{k+1}+ \prim^{k+1}-\proj^{k},
-\label{equation 4.1}
-\end{array}
-\right.
-\end{align}
-where, $T_{i}$ is defined as in Lemma \ref{L: strutured error}, for every $i\in I$.
-Then, for every  $(\proj,\dal)\in Z$, we have that 
+under the assumption that $S:=\bigcap_{i\in I}S_{i}\neq\emptyset$\\ \\
+We refer to the modified algorithm as the random iteration of BA, which guarantees the convergence of the iterations for a appropriate choice of the parameter $\alpha$:
  \begin{align}
-    \mathcal{L}\left(\Prim^{N},\dal\right)- \mathcal{L}\left(\prim,\Dal^{N}\right)\leq\frac{1}{N} \left(N\delta\left(\frac{2\gamma}{\alpha}\right)^{\frac{1}{2}}+V(z^{0}-z)^{\frac{1}{2}}+e\delta\sqrt{\frac{N}{2\tau}}\right)^2 \hspace{2mm}\text{  $\mathbb{P}$-a.s.}\end{align}
-where $V(z^{0}-z)=\frac{\|\proj^0-\proj\|^2}{2\tau}+\frac{\|\dal^0-\dal\|^2}{2\gamma}$ and for every $v\in ]0,1[$, we have \begin{align}
-        \|A\Prim^N-b\|^2\leq&\frac{8N\delta^2}{\alpha^{2}(1-\upsilon)}+\frac{4\delta}{(1-\upsilon)}\left(\frac{2 V(z^{0}-z)}{\gamma\alpha^3}\right)^{\frac{1}{2}}+\frac{4N\delta^2e}{(1-\upsilon)}\left(\frac{ 1}{\gamma\tau\alpha^3}\right)^{\frac{1}{2}}\nonumber\\&+\frac{4}{N\gamma\alpha(1-\upsilon)}V(z^{0}-z)+\frac{\delta^2}{\upsilon}+\frac{2(e\delta)^2}{\alpha\tau\gamma(1-v)}&\text{  $\mathbb{P}$-a.s.}
+    x^{k+1}=x^{k}+\alpha_{\xi_{k}}B_{\xi_{k}}\left(b-Ax^k\right)
+    \label{A: BAM}
+\end{align}
+where $\left(\xi_{k}\right)_{k=1}^{\infty}$ is a familily of i.i.d.  $S$-valued random variables.\\ \\For every $i\in I$, define $C_{i}=B_{i}A$ and $T_{i}=\Id-\alpha_{i}C_{i}$. Then the iteration matrix  \eqref{A: BAM} is equal to:
+\begin{align}
+    x^{k+1}=T_{\xi_{k}}x^{k}+\alpha_{\xi_{k}} B_{\xi_{k}}b.
+    \label{A: BAM-Operator}
+\end{align}
+Moreover, assume that 
+\begin{align}\begin{tabular}{lll}
+    $T\colon$ &$\RR^{p}\times I$&$\mapsto \RR^{p}$\nonumber\\
+    & $(x,i)$&$\mapsto x+\alpha_{i}B_{i}\left(b-Ax\right)$
+\end{tabular}
+\end{align}
+is measurable.
+\\ \\ This scheme is motivated by the following problem,
+\begin{align}
+    \bar{x}:=\argmin_{x\in\RR^{p}}\{\|Ax-b\|^2\}=(A^{T}A)^{-1}A^{T}b
+\end{align}
+\end{problem}
+\begin{theorem}\label{T:Convergence} Let $x_0\in\RR^{p}$. For every $i\in I$, let $\alpha_i$ the stepsize, such that 
+    \begin{align}
+        (\forall i\in I)\hspace{3mm} 2\alpha_{i}C_i-\alpha^{2}_{i}C^{T}_{i}C_{i}\hspace{3mm}\text{ is positive semidefinite.}
+        \label{c: conditionlambda}
     \end{align}
-    where, for every $n\in\NN$, $\left(\Prim^n,\Dal^n\right):=\left(\frac{\sum_{k=1}^{n}\prim^{k}}{n},\frac{\sum_{k=1}^{n}\dal^{k}}{n}\right)$  and $\alpha:=1-\tau\gamma\|A\|^2>0$.
-\end{theorem}
+    Then the sequence generated by Random BA iteration \eqref{A: BAM-Operator}  converges almost surely to a $S$-valued random variable.
+\end{theorem} 
 \begin{proof}
-It follow from \eqref{equation 4.1} that
-\begin{align}
-    \frac{\proj^k-\prim^{k+1}}{\tau}- A^*\dal^{k+1}&\in\partial J(\prim^{k+1})\nonumber\\
-   \frac{\dal^k-\dal^{k+1}}{\gamma}+A\bar{\proj}^k &=b^{\delta}
-\end{align}
-Thus, we have
-\begin{align}
-    J(\prim^{k+1})+\scal{\frac{\proj^k-\prim^{k+1}}{\tau}- A^*\dal^{k+1}}{\prim-\prim^{k+1}}\leq J(\prim)
-    \label{e:subdif}
-\end{align} and \eqref{e:subdif} yields
-\begin{align}
-         0\geq&2\tau \left(J(\prim^{k+1})-J(\prim)\right)+2\scal{\proj^k-\prim^{k+1}- \tau A^*\dal^{k+1}}{\prim-\prim^{k+1}}\nonumber\\ =& 2\tau \left(J(\prim^{k+1})-J(\prim)\right)+\|\proj^k-\prim^{k+1}-\tau A^*\dal^{k+1}\|^2+\|\prim^{k+1}-\prim\|^2-\|\proj^k-\prim-\tau A^*\dal^{k+1}\|^2
-                  \nonumber\\= & 2\tau \left(J(\prim^{k+1})-J(\prim)\right)+\|\proj^k-\prim^{k+1}\|^2-2\tau\scal{\proj^k-\prim^{k+1}}{A^*\dal^{k+1}}+\|\prim^{k+1}-\prim\|^2&\nonumber\\&-\|\proj^k-\prim\|^2+2\tau\scal{\proj^k-\prim}{A^*\dal^{k+1}}  \nonumber\\ =&2\tau \left(J(\prim^{k+1})-J(\prim)\right)+\|\proj^k-\prim^{k+1}\|^2+\|\prim^{k+1}-\prim\|^2\nonumber\\&-\|\proj^k-\prim\|^2+2\tau\scal{\prim^{k+1}-\prim}{A^*\dal^{k+1}} 
-                 \label{e: psub}
-\end{align}
-Analogously,
-\begin{align}
-    2\scal{\dal^k-\dal^{k+1}+\gamma A\bar{\proj}^k}{\dal-\dal^{k+1}}+2\gamma\scal{b^\delta}{\dal^{k+1}-\dal}&=0\nonumber\\ \|\dal^{k+1}-\dal^{k}\|^2+\|\dal^{k+1}-\dal\|^2-\|\dal^{k}-\dal\|^2+2\gamma\scal{ A\bar{\proj}^k}{\dal-\dal^{k+1}}+2\gamma\scal{b^\delta}{\dal^{k+1}-\dal}&=0\nonumber\\ \|\dal^{k+1}-\dal^{k}\|^2+\|\dal^{k+1}-\dal\|^2-\|\dal^{k}-\dal\|^2+2\gamma\scal{b^{\delta}-A\bar{\proj}^k}{\dal^{k+1}-\dal}&=0\label{e: dsub}
-\end{align}
-Recall that $z:=(\prim,\dal)$ and define  $V(z):=\frac{\|\prim\|^2}{2\tau}+\frac{\|\dal\|^2}{2\gamma}$. Dividing \eqref{e: psub} by $2\tau$, \eqref{e: dsub} by $2\gamma$ and by Lemma \ref{L: strutured error} we obtain 
-\begin{align}
-         J(\prim^{k+1})-J(\prim)+\frac{\|\prim^{k+1}-\proj^k\|^2}{2\tau} +\frac{\|\dal^{k+1}-\dal^{k}\|^2}{2\gamma}+V(z^{k+1}-z)-V(z^{k}-z)&\nonumber\\+\scal{A(\prim^{k+1}-\prim)}{\dal^{k+1}} +\scal{b^{\delta}-A\bar{\proj}^k}{\dal^{k+1}-\dal}-\frac{\left(e\delta\right)^2}{2\tau}&\leq 0\label{e: prestimate}
-    \end{align}
-    Now compute 
+  Let $\bar{x}\in S_i$ and $x\not\in S_i $
     \begin{align}
-        & J(\prim^{k+1})-J(\prim)+\scal{A(\prim^{k+1}-\prim)}{\dal^{k+1}} +\scal{b^{\delta}-A\bar{\proj}^k}{\dal^{k+1}-\dal}\nonumber\\ =&\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})-\scal{A\prim^{k+1}-b}{\dal}+\scal{A\prim-b}{\dal^{k+1}}\nonumber\\&+\scal{A(\prim^{k+1}-\prim)}{\dal^{k+1}} +\scal{b^{\delta}-A\bar{\proj}^k}{\dal^{k+1}-\dal}\nonumber\\ =&\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})-\scal{A\prim^{k+1}}{\dal}+\scal{b}{\dal}+\scal{A\prim}{\dal^{k+1}}-\scal{b}{\dal^{k+1}}\nonumber\\&+\scal{A\prim^{k+1}}{\dal^{k+1}}-\scal{A\prim}{\dal^{k+1}} +\scal{b^\delta}{\dal^{k+1}-\dal}-\scal{A\bar{\proj}^k}{\dal^{k+1}-\dal}\nonumber\\ =&\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})+\scal{b^{\delta}-b}{\dal^{k+1}-\dal} +\scal{A\prim^{k+1}-A\bar{\proj}^k}{\dal^{k+1}-\dal}\nonumber\\ \geq&\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})-\delta\|\dal^{k+1}-\dal\| +\scal{A\prim^{k+1}-A\bar{\proj}^k}{\dal^{k+1}-\dal}.
-        \label{e: lagrange}
+        \|Tx-\bar{x}\|^2=&\|x-\bar{x}\|^2-2\alpha_{i}\scal{B_{i}\left(b-Ax^k\right)}{x-\bar{x}}+\alpha_{i}^{2}\|B_{i}\left(b-Ax^k\right)\|^{2}\nonumber\\=&\|x-\bar{x}\|^2-2\alpha_{i}\scal{B_{i}A\left(\bar{x}-x^k\right)}{x-\bar{x}}+\alpha_{i}^{2}\|B_{i}A\left(x^k-\bar{x}\right)\|^{2}\nonumber\\=&\|x-\bar{x}\|^2-\scal{2\alpha_{i}C_i\left(\bar{x}-x^k\right)}{x-\bar{x}}+\scal{\alpha_{i}^{2}C^{T}_{i}C_i\left(x^k-\bar{x}\right)}{x^k-\bar{x}}\nonumber\\=&\|x-\bar{x}\|^2-\scal{(2\alpha_{i}C_i-\alpha^{2}_{i}C^{T}_{i}C_{i})\left(\bar{x}-x^k\right)}{x-\bar{x}}\nonumber\\<&\|x-\bar{x}\|^2,
     \end{align}
-   From \eqref{e: lagrange} and \eqref{e: prestimate} we obtain
-\begin{align}
-        &\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})+\frac{\|\prim^{k+1}-\proj^k\|^2}{2\tau} +\frac{\|\dal^{k+1}-\dal^{k}\|^2}{2\gamma}\nonumber\\&+V(z^{k+1}-z)-V(z^{k}-z)-\delta\|\dal^{k+1}-\dal\|-\frac{\left(e\delta\right)^2}{2\tau}\nonumber\\ \leq& -\scal{A\prim^{k+1}-A\bar{\proj}^k}{\dal^{k+1}-\dal} \nonumber\\ \leq& -\scal{A(\prim^{k+1}-\proj^{k})}{\dal^{k+1}-\dal}+\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k}-\dal} \nonumber\\ &+\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k+1}-\dal^k}\label{e: lagrangeI.5}\\  \leq& -\scal{A(\prim^{k+1}-\proj^{k})}{\dal^{k+1}-\dal}+\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k}-\dal} \nonumber\\ &+\frac{\tau\|A\|^2}{2}\|\dal^{k+1}-\dal^k\|^2+\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}\label{e: lagrangeI}
-    \end{align}
-   Then we have the following estimate:
-\begin{align}
-        &\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})+\frac{\|\prim^{k+1}-\proj^{k}\|}{2\tau}-\frac{\|\prim^{k}-\proj^{k-1}\|}{2\tau}\nonumber\\&+\frac{\alpha}{2\gamma}\|\dal^{k+1}-\dal^k\|^2+V(z^{k+1}-z)-V(z^{k}-z)\nonumber\\ \leq& \delta\|\dal^{k+1}-\dal\| -\scal{A(\prim^{k+1}-\proj^{k})}{\dal^{k+1}-\dal} +\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k}-\dal}+\frac{(e\delta)^2}{2\tau}
-        \label{e: lagrangeII}
-    \end{align}
-    Summing from $0,\ldots,N-1$ and using $\prim^0=\proj^{-1}$ we obtain 
-    \begin{align}
-        &\sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)+\frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}\nonumber\\&+\frac{\alpha}{2\gamma}\sum_{k=1}^{N}\|\dal^{k}-\dal^{k-1}\|^2+V(z^{N}-z)-V(z^{0}-z) \nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\| -\scal{A(\prim^{N}-\proj^{N-1})}{\dal^{N}-\dal}+\frac{N(e\delta)^2}{2\tau}\nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\| +\frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\tau\|A\|^2}{2}\|\dal^{N}-\dal\|^2+\frac{N(e\delta)^2}{2\tau}
-        \label{e: lagrangeIII.5}
-    \end{align}
-    Reordering \eqref{e: lagrangeIII.5} we obtain
-     \begin{align}
-        &\sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)+\frac{\alpha}{2\gamma}\sum_{k=1}^{N}\|\dal^{k}-\dal^{k-1}\|^2\nonumber\\&+\frac{\alpha}{2\gamma}\|\dal^{N}-\dal\|^2+\frac{\|\prim^{N}-\prim\|^2}{2\tau} \nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\|+V(z^{0}-z)+\frac{N(e\delta)^2}{2\tau}
-        \label{e: lagrangeIV.5}
-    \end{align}
- On the other hand, by \eqref{e: lagrangeI.5} we have the following estimate:
-\begin{align}
-        &\mathcal{L}(\prim^{k+1},\dal)-\mathcal{L}(\prim,\dal^{k+1})+V(z^{k+1}-z)-V(z^{k}-z)\nonumber\\&+\frac{\|\prim^{k+1}-\proj^{k}\|^2}{2\tau}-\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k+1}-\dal^k}+\frac{\|\dal^{k+1}-\dal^k\|^2}{2\gamma}\nonumber\\ \leq& \delta\|\dal^{k+1}-\dal\| -\scal{A(\prim^{k+1}-\proj^{k})}{\dal^{k+1}-\dal} \nonumber\\&+\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k}-\dal}+\frac{(e\delta)^2}{2\tau}
-        \label{e: lagrangeII.5}
-    \end{align}
-    Summing from $0,\ldots,N-1$ and using $\prim^0=\proj^{-1}$ we obtain 
-    \begin{align}
-        &\sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)+V(z^{N}-z)-V(z^{0}-z)\nonumber\\&+\sum_{k=1}^{N}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\scal{A(\prim^{k-1}-\proj^{k-2})}{\dal^{k}-\dal^{k-1}}+\frac{\|\dal^{k}-\dal^{k-1}\|^2}{2\gamma}\right) \nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\| -\scal{A(\prim^{N}-\proj^{N-1})}{\dal^{N}-\dal}+\frac{N(e\delta)^2}{2\tau}\nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\| +\frac{\tau\gamma\|A\|^2}{2\tau}\|\prim^{N}-\proj^{N-1}\|^2+\frac{\|\dal^{N}-\dal\|^2}{2\gamma}+\frac{N(e\delta)^2}{2\tau}
-        \label{e: lagrangeIII}
-    \end{align}
-    Now, since $\dal^{k+1}-\dal^{k}=\gamma\left(A\bar{\proj}^k-b^\delta\right)$, $\tau\gamma\|A\|^2<1$, and the convexity of $\|\cdot\|^2$ we compute
-    \begin{align}
-   &\sum_{k=1}^{N}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\scal{A(\prim^{k-1}-\proj^{k-2})}{\dal^{k}-\dal^{k-1}}+\frac{\|\dal^{k}-\dal^{k-1}\|^2}{2\gamma}\right)   \nonumber\\ =&  \sum_{k=1}^{N-1}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\scal{A(\prim^{k}-\proj^{k-1})}{\dal^{k+1}-\dal^{k}}+\frac{\|\dal^{k+1}-\dal^{k}\|^2}{2\gamma}\right)\nonumber\\&+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\|\dal^{1}-\dal^{0}\|^2}{2\gamma}\nonumber\\=&  \sum_{k=1}^{N-1}\left(\frac{\gamma}{2}\|A(\prim^{k}-\proj^{k-1})\|^2-\gamma\scal{A(\prim^{k}-\proj^{k-1})}{A\bar{\proj}^k-b^{\delta}}+\frac{\gamma}{2}\|A\bar{\proj}^k-b^{\delta}\|^2\right)\nonumber\\&+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\|\dal^{1}-\dal^{0}\|^2}{2\gamma}+\sum_{k=1}^{N-1}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\frac{\gamma}{2}\|A(\prim^{k}-\proj^{k-1})\|^2\right)\nonumber\\=&  \sum_{k=1}^{N-1}\frac{\gamma}{2}\|A\proj^k-b^{\delta}\|^2+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\|\dal^{1}-\dal^{0}\|^2}{2\gamma}\nonumber\\&+\sum_{k=1}^{N-1}\left(\frac{\|\prim^{k}-\proj^{k-1}\|^2}{2\tau}-\frac{\gamma}{2}\|A(\prim^{k}-\proj^{k-1})\|^2\right)\nonumber\\\geq&  \sum_{k=1}^{N-1}\frac{\gamma}{2}\|A\proj^k-b^{\delta}\|^2+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\|\dal^{1}-\dal^{0}\|^2}{2\gamma}+\sum_{k=1}^{N-1}\frac{\gamma\alpha}{2}\|A(\prim^{k}-\proj^{k-1})\|^2\nonumber\\\geq&  \sum_{k=1}^{N-1}\frac{\gamma}{2}\|A\proj^k-b^{\delta}\|^2+ \frac{\|\prim^{N}-\proj^{N-1}\|^2}{2\tau}+\frac{\gamma}{2}\|A\proj^0-b^{\delta}\|^2\nonumber\\&+\sum_{k=1}^{N-1}\frac{\gamma\alpha}{2}\|A(\prim^{k+1}-\proj^{k})\|^2-\frac{\gamma\alpha}{2}\|A(\prim^{N}-\proj^{N-1})\|^2+\frac{\gamma\alpha}{2}\|A(\prim^{1}-\proj^{0})\|^2\nonumber\\\geq&  \sum_{k=1}^{N}\frac{\alpha\gamma}{4}\|A\prim^{k}-b^{\delta}\|^2+\frac{1-\tau\gamma\|A\|^2\alpha}{2\tau}\|\prim^{N}-\proj^{N-1}\|^2,
-    \end{align}
-and for every $\upsilon\in ]0,1[$ we get
-    \begin{align}
-      \|A\prim^k-b^\delta\|^2 =&\|A\prim^k-b\|^2+\|b^{\delta}-b\|^2-2\scal{A\prim^k-b}{b^{\delta}-b}\nonumber\\\geq&(1-\upsilon)\|A\prim^k-b\|^2-\frac{(1-\upsilon)}{\upsilon}\|b^\delta-b\|^2.
-        \label{e: Axsep}
-    \end{align}
-    Reordering \eqref{e: lagrangeIII} we obtain
-     \begin{align}
-        &\sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)+\frac{\alpha^2}{2\tau}\|\prim^{N}-\proj^{N-1}\|^2\nonumber\\&\sum_{k=1}^{N}\frac{\alpha\gamma(1-\upsilon)}{4}\|A\prim^{k}-b\|^2+\frac{\|\prim^{N}-\prim\|^2}{2\tau} \nonumber\\\leq& \delta\sum_{k=1}^{N}\|\dal^{k}-\dal\|+V(z^{0}-z)+\frac{N(e\delta)^2}{2\tau}+N\frac{\gamma\alpha(1-\upsilon)}{4\upsilon}\delta^2
-        \label{e: lagrangeIV}
-    \end{align}
-    It remains to bound $\delta\sum_{k=1}^{N}\|\dal^{k}-\dal\|$, then from \eqref{e: lagrangeIV.5} 
-    \begin{align}
-     \|\dal^{N}-\dal\|^2\leq\frac{2\gamma\delta}{\alpha}  \sum_{k=1}^{N}\|\dal^{k}-\dal\|+\frac{2\gamma V(z^{0}-z)}{\alpha}+\frac{\gamma N(e\delta)^2}{\tau\alpha} ,
-        \label{e: U bound}
-    \end{align}
-    Apply \cite[Lemma A.1]{Chabolle-Rash} to Equation \eqref{e: U bound} with $\lambda_{k}:=\frac{2\gamma\delta}{\alpha} $ and $S_{k}:= \frac{2\gamma V(z^{0}-z)}{\alpha}+\frac{\gamma N(e\delta)^2}{\tau\alpha}$  to get
-    \begin{align}
-      \|\dal^{N}-\dal\|\leq& \frac{N\gamma\delta}{\alpha}+\left(\frac{2\gamma V(z^{0}-z)}{\alpha}+\frac{\gamma N(e\delta)^2}{\tau\alpha}+\left(\frac{N\gamma\delta}{\alpha}\right)^2\right)^{\frac{1}{2}}\nonumber\\\leq& \frac{2N\gamma\delta}{\alpha}+\left(\frac{2\gamma V(z^{0}-z)}{\alpha}\right)^{\frac{1}{2}}+\left(\frac{\gamma N(e\delta)^2}{\tau\alpha}\right)^{\frac{1}{2}}
-    \end{align}
-    Insert the latter in Equation \eqref{e: lagrangeIV.5}, to obtain
-     \begin{align}
-        \sum_{k=1}^{N}\left(\mathcal{L}(\prim^{k},\dal)-\mathcal{L}(\prim,\dal^{k})\right)\leq& \frac{2N^2\gamma\delta^2}{\alpha}+N\delta\left(\frac{2\gamma V(z^{0}-z)}{\alpha}\right)^{\frac{1}{2}}+N\delta\left(\frac{\gamma N(e\delta)^2}{\tau\alpha}\right)^{\frac{1}{2}}\nonumber\\ &+V(z^{0}-z)+\frac{N(e\delta)^2}{2\tau}\nonumber\\\leq& \left(N\delta\left(\frac{2\gamma}{\alpha}\right)^{\frac{1}{2}}+V(z^{0}-z)^{\frac{1}{2}}+e\delta\sqrt{\frac{N}{2\tau}}\right)^2
-        \label{e: lagrangeV}
-    \end{align}
-    
-    Analogously from \eqref{e: lagrangeIV}
-    \begin{align}
-         \sum_{k=1}^{N}\|A\prim^k-b\|^2\leq&\frac{8N^2\delta^2}{\alpha^{2}(1-\upsilon)}+\frac{4N\delta}{(1-\upsilon)}\left(\frac{2 V(z^{0}-z)}{\gamma\alpha^3}\right)^{\frac{1}{2}}+\frac{4N^2\delta^2e}{(1-\upsilon)}\left(\frac{ 1}{\gamma\tau\alpha^3}\right)^{\frac{1}{2}}\nonumber\\&+\frac{4}{\gamma\alpha(1-\upsilon)}V(z^{0}-z)+N\frac{\delta^2}{\upsilon}+\frac{2N(e\delta)^2}{\alpha\tau\gamma(1-v)}
-    \end{align}
-    and both results follows from the Jensen's inequality.
+and for every $i\in I$  $T_i$ is paracontractive and the result follows from \cite[Theorem 3.6]{Russell}
 \end{proof}
-\begin{corollary} (Early-stopping). Under the assumptions of Theorem \ref{T:  Inexalg}, choose $N=\frac{c}{\delta}$ for some $c>0$. Then there exist constants $C_1$, $C_2$, and $C_3$ such that
- \begin{align}
-    \mathcal{L}\left(\Prim^{N},\dal\right)- \mathcal{L}\left(\proj,\Dal^{N}\right)\leq&   C_1\delta\nonumber\\
-        \|A\Prim^N-b\|^2\leq& C_2\delta+ C_3\delta^2
+\begin{theorem}\label{T:Convergence1} Let $x_0\in\RR^{p}$. For every $i\in I$, let $\alpha_i$ the stepsize and  let $p_{i}=\mathbb{P}(\xi^{-1}(i))>0$, such that 
+    \begin{align}
+        \rho(\Id-\sum_{i\in I}(p_iw_iB_{i}A))<1
+        \label{c: conditionlambda1}
     \end{align}
-
-\end{corollary}
+    Then, for every $\bar{x}\in S$ \begin{align}
+        \mathbb{E}(x^{k}-\bar{x})\rightarrow 0\hspace{2mm}\text{ and }\hspace{2mm}k\rightarrow 0
+    \end{align}
+\end{theorem} 
+\begin{proof}
+    Let $\bar{x}\in S$ and $k\in\NN$. It follows from \eqref{A: BAM} that
+    \begin{align}
+        \mathbb{E}(x^{k+1}-\bar{x})&=x^{k}-\bar{x}-\sum_{i\in I}p_{i}w_{i}B_i(A_ix^{k}-b)\nonumber\\&=x^{k}-\bar{x}-\sum_{i\in I}p_{i}w_{i}B_iA(x^{k}-\bar{x})\nonumber\\&=\left(\Id-\sum_{i\in I}(p_iw_iB_{i}A)\right)(x^{k}-\bar{x})\nonumber\\&=\left(\Id-\sum_{i\in I}(p_iw_iB_{i}A)\right)^{k+1}(x^{0}-\bar{x})
+    \end{align}
+\end{proof}
+\begin{remark}We explore different instances of this method\\
+    \begin{itemize}
+    \item  If $N=1$ and $B_1=A^{T}$ we have that $C=A^{T}A$ and
+    \begin{align}
+        2\alpha x^{T}A^{T}Ax-\alpha^{2}x^{T}C^{T}Cx=2\alpha \|Ax\|^{2}-\alpha^{2}\|A^{T}Ax\|^{2}\geq (2\alpha -\alpha^{2}\|A\|^2)\|Ax\|^{2},
+    \end{align}
+ which is positive if $\alpha\in]0,\frac{2}{\|A\|^2}[$.
+ Then \eqref{A: BAM}  is reduced to the method proposed in  \cite{Landweber} and
+ its convergence is deduced from Theorem~\ref{T:Convergence}. 
+\end{itemize}
+\end{remark}
 \begin{thebibliography}{99}
-\setlength{\itemsep}{1pt}
-\bibitem{Chabolle-Rash}
- Chambolle, A., Rasch, J.: Inexact first‑order primal–dual algorithms.Computational Optimization and Applications. {76}, 381–430 (2020)
-\end{thebibliography}
+    \setlength{\itemsep}{1pt}
+    \bibitem{Russell}
+    {\sc N. Hermer, L.D. Russell, and A. Sturm}, {\it Random Function Iterations for Consistent
+    Stochastic Feasibility} 2019.
+    \bibitem{Landweber} 
+ H. W. Engl, M. Hanke, and A. Neubauer. Regularization of Inverse Problems (Mathematics and its Applications).  Dordrecht, The Netherlands: Springer, vol. 375, 1996.
+    \bibitem{Livre1} 
+    {\sc H. H. Bauschke and P. L. Combettes,}
+    {\em Convex Analysis and Monotone Operator Theory in Hilbert Spaces.}2nd edn. Springer, New York (2017).
+    \end{thebibliography}
 \end{document}
